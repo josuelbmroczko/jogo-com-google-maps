@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let notas= []
+        let verdadeiro = true
+
+        while(verdadeiro){
+            let adicionarnota = parseFloat(prompt("adicionar nota"))
+
+            if(adicionarnota === 0){
+                    verdadeiro = false
+            }else{
+                notas.push(adicionarnota)
+            }
+            
+            }
+        let media = 0
+            for(let i =0; i < notas.length; i++ ){
+                media += notas[i]
+            }
+
+        let mediiia = media/notas.length
+        console.log(mediiia);
+        
+
+        
+    </script>
+</body>
+</html>

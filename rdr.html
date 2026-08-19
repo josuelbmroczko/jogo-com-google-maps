@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let notas = []
+        let escrito = true
+
+        while(escrito){
+            let novaNota = parseFloat(prompt("nova nota"))
+
+            if(novaNota === 0 ){
+                escrito = false
+                console.log("fechou");
+            }else{
+                notas.push(novaNota)
+            }
+        }
+
+        let somartodas = 0
+        for(let i = 0; i < notas.length;i++){
+            somartodas += notas[i]
+        }
+
+        let media = somartodas/notas.length
+        console.log(media);
+        
+    </script>
+</body>
+</html>

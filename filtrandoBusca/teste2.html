@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numero = [1,2,3,4,5,6,7,8,9,1,2,4,2,-4]
+        let buscar = numero.filter(p => p.toLocaleString().startsWith(1))
+        let ordemNumerica = numero.sort((a,b) => a - b)
+        let somartudo = 0
+        for(let i =0; i<numero.length;i++){
+            somartudo +=numero[i]
+        }
+        
+        console.log(buscar);
+        console.log(ordemNumerica);
+        console.log(somartudo);
+
+    </script>
+</body>
+</html>

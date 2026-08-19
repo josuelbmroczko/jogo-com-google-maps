@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      @page {
+        size: A4;
+        margin: 15mm 15mm;
+        background-color: #faf9f6;
+      }
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+        font-size: 11pt;
+        margin: 0;
+        padding: 0;
+        background-color: #faf9f6;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 10px;
+        font-size: 22pt;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      h2 {
+        color: #2c3e50;
+        margin-top: 30px;
+        border-left: 5px solid #e74c3c;
+        padding-left: 12px;
+        font-size: 16pt;
+        page-break-after: avoid;
+        background-color: #f1f2f6;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      h3 {
+        color: #2980b9;
+        margin-top: 20px;
+        font-size: 13pt;
+        page-break-after: avoid;
+      }
+      p {
+        margin-bottom: 10px;
+      }
+      .code-block {
+        background-color: #2d3436;
+        color: #f5f6fa;
+        border-left: 4px solid #00cec9;
+        padding: 12px;
+        margin: 10px 0 20px 0;
+        font-family: "Courier New", monospace;
+        font-size: 10pt;
+        border-radius: 4px;
+        page-break-inside: avoid;
+        white-space: pre-wrap;
+      }
+      .method-name {
+        font-weight: bold;
+        color: #d35400;
+        background-color: #fdebd0;
+        padding: 2px 5px;
+        border-radius: 3px;
+      }
+      .section {
+        margin-bottom: 30px;
+      }
+      .note {
+        background-color: #e8f8f5;
+        border-left: 4px solid #1abc9c;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-size: 10.5pt;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Guia Essencial: JavaScript Fundamentos</h1>
+    <p>
+      Este guia expandido cobre os conceitos fundamentais do JavaScript, focado
+      em estruturas de controle de fluxo e manipulação avançada de arrays. Ideal
+      para consultas rápidas e estudos estruturados.
+    </p>
+
+    <div class="section">
+      <h2>1. Estruturas de Controle (Lógica)</h2>
+      <p>
+        As estruturas de controle permitem que o código tome decisões e repita
+        ações com base em condições dinâmicas.
+      </p>
+
+      <h3>Condicionais</h3>
+      <p>
+        <strong>if / else / else if:</strong> A base da tomada de decisão.
+        Avalia uma condição booleana.
+      </p>
+      <div class="code-block">
+        if (idade >= 18) { console.log("Maior de idade"); } else if (idade ===
+        17) { console.log("Quase lá!"); } else { console.log("Menor de idade");
+        }
+      </div>
+
+      <p>
+        <strong>Operador Ternário:</strong> Uma forma concisa de escrever um
+        <code>if/else</code> para atribuições.
+      </p>
+      <div class="code-block">
+        const status = (nota >= 7) ? "Aprovado" : "Reprovado";
+      </div>
+
+      <p>
+        <strong>switch:</strong> Útil para comparar o valor de uma única
+        variável contra múltiplos casos específicos.
+      </p>
+      <div class="code-block">
+        switch (sinal) { case 'verde': acelerar(); break; case 'amarelo':
+        atencao(); break; case 'vermelho': parar(); break; default:
+        console.log("Sinal quebrado"); }
+      </div>
+
+      <h3>Laços de Repetição (Loops)</h3>
+      <p>
+        <strong>for:</strong> Ideal quando se sabe o número exato de repetições.
+        Composto por inicialização, condição e incremento.
+      </p>
+      <div class="code-block">
+        for (let i = 0; i < 5; i++) { console.log(`Iteração ${i}`); }
+      </div>
+
+      <p>
+        <strong>while e do...while:</strong> Repete enquanto a condição for
+        verdadeira. O <code>do...while</code> garante pelo menos uma execução.
+      </p>
+      <div class="code-block">
+        let contador = 0; while (contador < 3) { contador++; // Executa enquanto
+        < 3 } let tentativas = 0; do { tentativas++; // Executa primeiro, depois
+        verifica } while (tentativas < 0);
+      </div>
+
+      <p>
+        <strong>for...of e for...in:</strong> <code>for...of</code> itera sobre
+        os *valores* de objetos iteráveis (como Arrays).
+        <code>for...in</code> itera sobre as *chaves/propriedades* de um objeto.
+      </p>
+      <div class="code-block">
+        const frutas = ['Maçã', 'Banana', 'Uva']; for (let fruta of frutas) {
+        console.log(fruta); // Imprime os nomes } const pessoa = { nome: 'João',
+        idade: 30 }; for (let chave in pessoa) { console.log(`${chave}:
+        ${pessoa[chave]}`); // nome: João, idade: 30 }
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>2. Métodos de Busca e Validação em Arrays</h2>
+      <p>
+        Estes métodos não alteram o array original, apenas procuram informações
+        dentro dele.
+      </p>
+
+      <p>
+        <span class="method-name">indexOf(item)</span> e
+        <span class="method-name">lastIndexOf(item)</span>: Retornam o índice da
+        primeira e última ocorrência, respectivamente. Retornam -1 se não
+        encontrar.
+      </p>
+      <div class="code-block">
+        const numeros = [10, 20, 30, 20, 50]; numeros.indexOf(20); // Retorna 1
+        numeros.lastIndexOf(20); // Retorna 3
+      </div>
+
+      <p>
+        <span class="method-name">includes(item)</span>: Retorna
+        <code>true</code> se o item existir, caso contrário <code>false</code>.
+        Mais legível que usar <code>indexOf() !== -1</code>.
+      </p>
+      <div class="code-block">
+        const temTrinta = [10, 20, 30].includes(30); // Retorna true
+      </div>
+
+      <p>
+        <span class="method-name">find(callback)</span> e
+        <span class="method-name">findIndex(callback)</span>: Excelentes para
+        buscar objetos complexos. Retornam o primeiro *elemento* ou seu *índice*
+        que passe na condição.
+      </p>
+      <div class="code-block">
+        const usuarios = [{id: 1, nome: 'Ana'}, {id: 2, nome: 'Carlos'}]; const
+        user = usuarios.find(u => u.id === 2); // Retorna {id: 2, nome:
+        'Carlos'}
+      </div>
+
+      <p>
+        <span class="method-name">some(callback)</span> e
+        <span class="method-name">every(callback)</span>:
+        <code>some</code> verifica se *pelo menos um* elemento passa no teste.
+        <code>every</code> verifica se *todos* passam.
+      </p>
+      <div class="code-block">
+        const idades = [15, 18, 20]; const algumMaior = idades.some(idade =>
+        idade >= 18); // true const todosMaiores = idades.every(idade => idade
+        >= 18); // false
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>3. Métodos Transformadores (Funcionais)</h2>
+      <p>
+        Base da programação funcional em JS. Eles criam e retornam um
+        <strong>novo array</strong> (ou valor), preservando o original
+        (imutabilidade).
+      </p>
+
+      <p>
+        <span class="method-name">map(callback)</span>: Cria um novo array
+        transformando cada elemento. O array resultante tem sempre o mesmo
+        tamanho do original.
+      </p>
+      <div class="code-block">
+        const precos = [10, 20]; const comDesconto = precos.map(preco => preco *
+        0.9); // [9, 18]
+      </div>
+
+      <p>
+        <span class="method-name">filter(callback)</span>: Cria um novo array
+        apenas com elementos que retornam <code>true</code> no teste. O tamanho
+        pode ser menor que o original.
+      </p>
+      <div class="code-block">
+        const numeros = [1, 2, 3, 4, 5]; const pares = numeros.filter(n => n % 2
+        === 0); // [2, 4]
+      </div>
+
+      <p>
+        <span class="method-name">reduce(callback, valorInicial)</span>: Reduz o
+        array a um único valor (pode ser um número, string, objeto, etc). O
+        <code>acc</code> (acumulador) guarda o estado entre as iterações.
+      </p>
+      <div class="code-block">
+        const carrinho = [10.5, 20.0, 5.5]; const total = carrinho.reduce((acc,
+        valor) => acc + valor, 0); // 36.0
+      </div>
+
+      <div class="note">
+        <strong>Dica Pro:</strong> Você pode encadear esses métodos! Ex:
+        <code>array.filter(...).map(...).reduce(...)</code>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>4. Manipulação de Arrays</h2>
+      <p>
+        Aqui dividimos entre métodos que <strong>mutam</strong> (alteram) o
+        array original e os que retornam novas cópias.
+      </p>
+
+      <h3>Mutáveis (Alteram o array original)</h3>
+      <p>
+        <span class="method-name">push(item)</span> e
+        <span class="method-name">pop()</span>: Adiciona ou remove itens no
+        <strong>final</strong> do array.
+      </p>
+      <p>
+        <span class="method-name">unshift(item)</span> e
+        <span class="method-name">shift()</span>: Adiciona ou remove itens no
+        <strong>início</strong> do array (reindexando os demais).
+      </p>
+      <div class="code-block">
+        const fila = ['B', 'C']; fila.push('D'); // ['B', 'C', 'D']
+        fila.unshift('A'); // ['A', 'B', 'C', 'D'] fila.pop(); // Retira 'D' ->
+        ['A', 'B', 'C'] fila.shift(); // Retira 'A' -> ['B', 'C']
+      </div>
+
+      <p>
+        <span class="method-name"
+          >splice(inicio, qtdRemover, ...itensAdicionar)</span
+        >: Um canivete suíço. Remove, substitui ou adiciona elementos em
+        qualquer posição.
+      </p>
+      <div class="code-block">
+        const meses = ['Jan', 'Mar', 'Abr']; meses.splice(1, 0, 'Fev'); //
+        Adiciona 'Fev' no índice 1. Fica: ['Jan', 'Fev', 'Mar', 'Abr']
+      </div>
+
+      <p>
+        <span class="method-name">sort(callback)</span>: Ordena os itens.
+        <strong>Atenção:</strong> por padrão ordena como strings (ordem
+        alfabética). Para números, passe uma função de comparação.
+      </p>
+      <div class="code-block">
+        const numeros = [10, 5, 20, 2]; numeros.sort((a, b) => a - b); // [2, 5,
+        10, 20] (Ordem Crescente)
+      </div>
+
+      <h3>Imutáveis (Retornam um novo array/string)</h3>
+      <p>
+        <span class="method-name">slice(inicio, fim)</span>: Retorna uma cópia
+        de uma parte do array. Não altera o original.
+      </p>
+      <div class="code-block">
+        const pedaco = ['a', 'b', 'c', 'd'].slice(1, 3); // ['b', 'c'] (Índice 3
+        não incluso)
+      </div>
+
+      <p>
+        <span class="method-name">concat(outroArray)</span>: Junta dois ou mais
+        arrays em um novo.
+      </p>
+      <div class="code-block">
+        const todos = [1, 2].concat([3, 4]); // [1, 2, 3, 4]
+      </div>
+
+      <p>
+        <span class="method-name">join(separador)</span>: Une todos os elementos
+        do array em uma única String, divididos pelo separador.
+      </p>
+      <div class="code-block">
+        const url = ['www', 'google', 'com'].join('.'); // "www.google.com"
+      </div>
+    </div>
+  </body>
+</html>
